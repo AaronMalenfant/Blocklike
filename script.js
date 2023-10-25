@@ -16,6 +16,7 @@ let mouse = new blockLike.Sprite({
     image: 'mouse/10.svg'
   })
 });
+
 duck.addCostume(new blockLike.Costume({
   //color: '#A2DAFF',
   image: 'duck/fly2.svg'
@@ -30,7 +31,7 @@ function fly(times, dist, wait) {
 }
 duck.addTo(stage);
 mouse.addTo(stage);
-stage.whenFlag(function() {
+stage.whenFlag(function () {
 
   duck.goTo(-250, 0);
 
@@ -42,13 +43,13 @@ stage.whenFlag(function() {
   }
 });
 
-duck.whenClicked(function() {
+duck.whenClicked(function () {
   debugger;
   this.goTo(-200, 0);
   this.invoke(fly, [10, 50, 0.5])
 });
 
-stage.whenClicked(function() {
+stage.whenClicked(function () {
   const touch = mouse.isTouching(duck);
   if (bullets <= 1) {
     mouse.say("out!");
@@ -60,10 +61,14 @@ stage.whenClicked(function() {
     duck.goTo(-200, 0);
   }
   mouse.say(bullets);
-
 });
 
-mouse.whenFlag(function() {
+stage.whenKeyPressed(function(x) {
+  debugger;
+  console.log(x);
+
+});
+mouse.whenFlag(function () {
   console.log("whenFlag " + forever);
 
   while (forever) {
